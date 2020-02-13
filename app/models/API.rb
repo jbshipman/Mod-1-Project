@@ -43,9 +43,7 @@ class Api < ActiveRecord::Base
         end
 
 
-        # id_of_veg = Vegetable.all.select { |veggies| veggies.name == veg }
-        # id_of_prot = Protein.all.select { |proteins| proteins.name == prot}
-        # Recipe.create(name: recipe_title, instructions: text, vegetable_id: id_of_veg, protein_id: id_of_prot)
+        Recipe.create(name: recipe_hash["recipes"][0]["title"], instructions: recipe_hash["recipes"][0]["instructions"])
     end
 
 end
