@@ -11,10 +11,11 @@ class Recipe < ActiveRecord::Base
   def self.recipe_select
     prompt = TTY::Prompt.new
     @recipe_choice = prompt.select("Please pick your Recipe", list_all_recipe_names)
-      until prompt.yes?("You selected #{@recipe_choice}, is this correct?") == true
-        @recipe_choice = prompt.select("Pick your protein carefully this time...", list_all_recipe_names)
-      end
-    return @recipe_choice 
+      # until prompt.yes?("You selected #{@recipe_choice}, is this correct?") == true
+        self.show_instructions(recipe_choice)
+      #   @recipe_choice = prompt.select("Pick your protein carefully this time...", list_all_recipe_names)
+      # end
+    # return @recipe_choice 
   end
 
   def self.recipe_choice
@@ -40,8 +41,38 @@ class Recipe < ActiveRecord::Base
     end
   end
 
-  def self.list
-    self.all.map {|recipe| p recipe.name}
+  def self.format(text)
+    i = 1
+    
+    # newline used lump return
+    if text.scan(/$/)
+        while i < text.scan(/$/).count do
+            puts "#{i}. #{text.split(/$/)[i][1..-1]}"
+            puts
+            i += 1
+        end 
+    elsif text.scan(/\d\./) # ordered list lump
+        while i < text.scan(/\d\./).count do
+            puts "#{i}. #{text.split(/\d\./)[i]}"
+            i += 1
+        end
+    elsif text.scan(/<ol>/) # remove html tags
+        text_array = text.gsub(/<\/li>|<ol>|<\/ol>|<\/html>|<\/body>/,'').split(/<li>/)
+        while i < text_array.length do
+            puts "#{i}. #{text_array[i]}"
+            i += 1
+        end
+    else
+        puts text 
+    end
+  end 
+
+  def self.show_instructions(recipe_choice)
+    # puts recipe_choice.inspect
+    single_recipe = self.all.select {|recipe| recipe.name == recipe_choice}
+    # puts single_recipe.inspect
+    format(single_recipe[0][:instructions])
+    # format(new).to_s
   end
 
   def self.find(name)

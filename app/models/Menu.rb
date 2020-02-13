@@ -6,7 +6,7 @@ class Menu < ActiveRecord::Base
 
     @menu_options = ["Find Recipe", "Add Items", "Delete Items", "Edit Items", "Show Items", "Exit"]
     @add_options = ["Add Protein", "Add Vegetable", "<Back"]
-    @delete_options = ["Delete Protein", "Delete Vegetable","Delete Recipe" "<Back"]
+    @delete_options = ["Delete Protein", "Delete Vegetable","Delete Recipe", "<Back"]
     @edit_options = ["Edit Protein", "Edit Vegetable", "<Back"]
     @show_options = ["Show Proteins", "Show Vegetables", "Show Recipes", "<Back"]
 
@@ -90,7 +90,7 @@ class Menu < ActiveRecord::Base
         elsif show_response == "Show Vegetables"
             Vegetable.list
         elsif show_response == "Show Recipes"
-            Recipe.list
+            Recipe.recipe_select
         end
         puts
         self.start
