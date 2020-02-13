@@ -42,7 +42,6 @@ class Api < ActiveRecord::Base
             puts recipe_hash["recipes"][0]["instructions"] 
         end
 
-
         Recipe.create(name: recipe_hash["recipes"][0]["title"], instructions: recipe_hash["recipes"][0]["instructions"])
     end
 
