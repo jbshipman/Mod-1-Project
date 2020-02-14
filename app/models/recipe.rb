@@ -5,7 +5,7 @@ class Recipe < ActiveRecord::Base
   attr_accessor :recipe_choice
 
   def self.list_all_recipe_names
-    Recipe.all.map { |recipe| recipe.name}
+    Recipe.all.map { |recipe| recipe.name}.sort.uniq
   end 
   
   def self.recipe_select
