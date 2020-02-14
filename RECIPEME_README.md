@@ -26,7 +26,7 @@ _Show Items_
 ![show items](README_FILES/appscreen_002_showitems.jpeg) 
 
 _Recipe_
-![recipe](README_FILES/appscreen_003_recipe.jpeg)
+![recipe](README_FILES/appscreen_003_recipe-alt.jpeg)
 
 
 ## Appendix
