@@ -11,38 +11,39 @@ class Api < ActiveRecord::Base
         recipe = response.body
         recipe_hash = JSON.parse(recipe)
 
-        # recipe_title = recipe_hash["recipes"][0]["title"]
-        puts recipe_hash["recipes"][0]["title"]
-        puts 
-
-
-        # puts recipe instructions with basic formatting
-        # text = recipe_hash["recipes"][0]["instructions"]
-        # i = 1
+        recipe_title = recipe_hash["recipes"][0]["title"]
         
-        # # newline used lump return
-        # if text.scan(/$/)
-        #     while i < text.scan(/$/).count do
-        #         puts "#{i}. #{text.split(/$/)[i][1..-1]}"
-        #         puts
-        #         i += 1
-        #     end 
-        # elsif text.scan(/\d\./) # ordered list lump
-        #     while i < text.scan(/\d\./).count do
-        #         puts "#{i}. #{text.split(/\d\./)[i]}"
-        #         i += 1
-        #     end
-        # elsif text.scan(/<ol>/) # remove html tags
-        #     text_array = text.gsub(/<\/li>|<ol>|<\/ol>|<\/html>|<\/body>/,'').split(/<li>/)
-        #     while i < text_array.length do
-        #         puts "#{i}. #{text_array[i]}"
-        #         i += 1
-        #     end
-        # else
-            puts recipe_hash["recipes"][0]["instructions"] 
-        # end
-
+        puts recipe_title
+        puts recipe_hash["recipes"][0]["instructions"]
+        
         Recipe.create(name: recipe_hash["recipes"][0]["title"], instructions: recipe_hash["recipes"][0]["instructions"])
     end
+
+    # def text_format(text)
+    #     # puts recipe instructions with basic formatting
+    #     puts text.inspect
+    #     i = 1
+        
+    #     # newline used lump return
+    #     if text.scan(/$/)
+    #         while i < text.scan(/$/).count do
+    #             i += 1
+    #             return "#{i}. #{text.split(/$/)[i][1..-1]}"
+    #         end 
+    #     elsif text.scan(/\d\./) # ordered list lump
+    #         while i < text.scan(/\d\./).count do
+    #             i += 1
+    #             return "#{i}. #{text.split(/\d\./)[i]}"
+    #         end
+    #     elsif text.scan(/<ol>/) # remove html tags
+    #         text_array = text.gsub(/<\/li>|<ol>|<\/ol>|<\/html>|<\/body>/,'').split(/<li>/)
+    #         while i < text_array.length do
+    #             i += 1
+    #             return "#{i}. #{text_array[i]}"
+    #         end
+    #     else
+    #         return text 
+    #     end
+    # end
 
 end
