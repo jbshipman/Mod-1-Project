@@ -42,29 +42,29 @@ class Recipe < ActiveRecord::Base
   end
 
   def self.format(text)
-    i = 1
+    # i = 0
     
-    # newline used lump return
-    if text.scan(/$/)
-        while i < text.scan(/$/).count do
-            puts "#{i}. #{text.split(/$/)[i][1..-1]}"
-            puts
-            i += 1
-        end 
-    elsif text.scan(/\d\./) # ordered list lump
-        while i < text.scan(/\d\./).count do
-            puts "#{i}. #{text.split(/\d\./)[i]}"
-            i += 1
-        end
-    elsif text.scan(/<ol>/) # remove html tags
-        text_array = text.gsub(/<\/li>|<ol>|<\/ol>|<\/html>|<\/body>/,'').split(/<li>/)
-        while i < text_array.length do
-            puts "#{i}. #{text_array[i]}"
-            i += 1
-        end
-    else
+    # # newline used lump return
+    # if text.scan(/$/)
+    #     while i < text.scan(/$/).count do
+    #         puts "#{i+1}. #{text.split(/$/)[i][1..-1]}"
+    #         puts
+    #         i += 1
+    #     end 
+    # elsif text.scan(/\d\./) # ordered list lump
+    #     while i < text.scan(/\d\./).count do
+    #         puts "#{i+1}. #{text.split(/\d\./)[i]}"
+    #         i += 1
+    #     end
+    # elsif text.scan(/<ol>/) # remove html tags
+    #     text_array = text.gsub(/<\/li>|<ol>|<\/ol>|<\/html>|<\/body>/,'').split(/<li>/)
+    #     while i < text_array.length do
+    #         puts "#{i+1}. #{text_array[i]}"
+    #         i += 1
+    #     end
+    # else
         puts text 
-    end
+    # end
   end 
 
   def self.show_instructions(recipe_choice)
