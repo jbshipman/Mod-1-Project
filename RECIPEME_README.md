@@ -25,11 +25,16 @@ _Start Menu_
 
 _Show Items_
 
+![gif1](https://media.giphy.com/media/IfsP0ZEJ04RCvlhJa0/giphy.gif)
+
 ![show items](README_FILES/appscreen_002_showitems.jpeg) 
 
 _Recipe_
 
+
 ![recipe](README_FILES/appscreen_003_recipe-alt.jpeg)
+
+![gif2](https://media.giphy.com/media/U5CutAGwVONZI8FSCI/giphy.gif)
 
 
 ## Appendix
