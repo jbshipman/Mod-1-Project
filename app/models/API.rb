@@ -17,30 +17,30 @@ class Api < ActiveRecord::Base
 
 
         # puts recipe instructions with basic formatting
-        text = recipe_hash["recipes"][0]["instructions"]
-        i = 1
+        # text = recipe_hash["recipes"][0]["instructions"]
+        # i = 1
         
-        # newline used lump return
-        if text.scan(/$/)
-            while i < text.scan(/$/).count do
-                puts "#{i}. #{text.split(/$/)[i][1..-1]}"
-                puts
-                i += 1
-            end 
-        elsif text.scan(/\d\./) # ordered list lump
-            while i < text.scan(/\d\./).count do
-                puts "#{i}. #{text.split(/\d\./)[i]}"
-                i += 1
-            end
-        elsif text.scan(/<ol>/) # remove html tags
-            text_array = text.gsub(/<\/li>|<ol>|<\/ol>|<\/html>|<\/body>/,'').split(/<li>/)
-            while i < text_array.length do
-                puts "#{i}. #{text_array[i]}"
-                i += 1
-            end
-        else
+        # # newline used lump return
+        # if text.scan(/$/)
+        #     while i < text.scan(/$/).count do
+        #         puts "#{i}. #{text.split(/$/)[i][1..-1]}"
+        #         puts
+        #         i += 1
+        #     end 
+        # elsif text.scan(/\d\./) # ordered list lump
+        #     while i < text.scan(/\d\./).count do
+        #         puts "#{i}. #{text.split(/\d\./)[i]}"
+        #         i += 1
+        #     end
+        # elsif text.scan(/<ol>/) # remove html tags
+        #     text_array = text.gsub(/<\/li>|<ol>|<\/ol>|<\/html>|<\/body>/,'').split(/<li>/)
+        #     while i < text_array.length do
+        #         puts "#{i}. #{text_array[i]}"
+        #         i += 1
+        #     end
+        # else
             puts recipe_hash["recipes"][0]["instructions"] 
-        end
+        # end
 
         Recipe.create(name: recipe_hash["recipes"][0]["title"], instructions: recipe_hash["recipes"][0]["instructions"])
     end
