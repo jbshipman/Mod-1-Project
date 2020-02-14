@@ -20,12 +20,15 @@ You can also choose to view and/or modify the two ingredient lists as well as vi
 ## Screenshots of RECIPEME
 
 _Start Menu_
+
 ![start menu](README_FILES/appscreen_001_startmenu.jpeg)
 
 _Show Items_
+
 ![show items](README_FILES/appscreen_002_showitems.jpeg) 
 
 _Recipe_
+
 ![recipe](README_FILES/appscreen_003_recipe-alt.jpeg)
 
 
