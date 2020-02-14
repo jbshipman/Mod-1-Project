@@ -11,11 +11,7 @@ class Recipe < ActiveRecord::Base
   def self.recipe_select
     prompt = TTY::Prompt.new
     @recipe_choice = prompt.select("Please pick your Recipe", list_all_recipe_names)
-      # until prompt.yes?("You selected #{@recipe_choice}, is this correct?") == true
         self.show_instructions(recipe_choice)
-      #   @recipe_choice = prompt.select("Pick your protein carefully this time...", list_all_recipe_names)
-      # end
-    # return @recipe_choice 
   end
 
   def self.recipe_choice
