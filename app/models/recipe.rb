@@ -63,12 +63,9 @@ class Recipe < ActiveRecord::Base
   end 
 
   def self.show_instructions(recipe_choice)
-    # puts recipe_choice.inspect
     single_recipe = self.all.select {|recipe| recipe.name == recipe_choice}
-    # puts single_recipe.inspect
     # puts format(single_recipe[0][:instructions])
     puts single_recipe[0][:instructions]
-    # format(new).to_s
   end
 
   def self.find(name)
